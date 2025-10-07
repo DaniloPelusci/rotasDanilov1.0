@@ -5,6 +5,7 @@ API em Spring Boot para cadastro de clientes com localização geográfica e ger
 ## Pré-requisitos
 - Java 17
 - Maven 3.9+
+- PostgreSQL 14+
 
 ## Como executar
 ```bash
@@ -53,3 +54,25 @@ O documento OpenAPI em formato JSON está disponível em `http://localhost:8080/
 ```bash
 mvn test
 ```
+
+## Configuração do banco de dados PostgreSQL
+
+Para criar a estrutura necessária para a aplicação, execute o script abaixo em um servidor PostgreSQL:
+
+```sql
+CREATE DATABASE rotas;
+
+\c rotas;
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE clientes (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    nome VARCHAR(255) NOT NULL,
+    endereco VARCHAR(255) NOT NULL,
+    latitude DOUBLE PRECISION NOT NULL,
+    longitude DOUBLE PRECISION NOT NULL
+);
+```
+
+> Obs.: O uso da extensão `uuid-ossp` permite gerar valores UUID diretamente no banco ao inserir novos clientes.
