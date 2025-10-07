@@ -76,3 +76,13 @@ CREATE TABLE clientes (
 ```
 
 > Obs.: O uso da extensão `uuid-ossp` permite gerar valores UUID diretamente no banco ao inserir novos clientes.
+
+Para popular a tabela com alguns clientes de exemplo, utilize o script a seguir após criar a estrutura:
+
+```sql
+INSERT INTO clientes (nome, endereco, latitude, longitude) VALUES
+    ('Mercado Central', 'Av. Principal, 100', -23.5505, -46.6333),
+    ('Padaria do Bairro', 'Rua das Flores, 45', -23.5520, -46.6320),
+    ('Farmácia Saúde', 'Rua das Acácias, 210', -23.5489, -46.6351),
+    ('Posto 24h', 'Av. das Nações, 500', -23.5472, -46.6308);
+```
